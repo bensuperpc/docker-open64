@@ -74,8 +74,6 @@ ENV VERSION=$VERSION
 
 RUN apt-get update && apt-get -y install \
 	make \
-    libc-dev \
-    libc++-dev \
 	g++ \
 	--no-install-recommends \
 	&& apt-get -y autoremove --purge \
@@ -85,7 +83,8 @@ COPY --from=builder /usr/local /usr/local
 
 ENV PATH="/usr/local/bin:${PATH}"
 RUN opencc -v
-ENV CC=/usr/local/bin/opencc
+ENV CC=/usr/local/bin/opencc \
+	CXX=/usr/local/bin/opencc
 
 WORKDIR /usr/src/myapp
 
