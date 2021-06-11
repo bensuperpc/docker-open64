@@ -1,2 +1,2 @@
-# docker-compiler-multi-arch
-docker-compiler template
+# docker-open64
+open64 compiler in docker, AMD64 only
