@@ -20,8 +20,9 @@
 #//  CPU: ALL                                                //
 #//                                                          //
 #//////////////////////////////////////////////////////////////
-BASE_IMAGE := alpine:latest
-IMAGE_NAME := bensuperpc/<<IMAGE_NAME>>
+#build fail on ubuntu 18.04 and up
+BASE_IMAGE := ubuntu:16.04
+IMAGE_NAME := bensuperpc/open64
 DOCKERFILE := Dockerfile
 
 DOCKER := docker
@@ -31,7 +32,8 @@ DATE_FULL := $(shell date -u "+%Y-%m-%dT%H:%M:%SZ")
 UUID := $(shell cat /proc/sys/kernel/random/uuid)
 VERSION := 1.0.0
 
-ARCH_LIST := linux/amd64 linux/386 linux/arm64 linux/ppc64le linux/s390x linux/arm/v7 linux/arm/v6
+# linux/386 linux/arm64 linux/ppc64le linux/s390x linux/arm/v7 linux/arm/v6
+ARCH_LIST := linux/amd64
 comma:= ,
 COM_ARCH_LIST:= $(subst $() $(),$(comma),$(ARCH_LIST))
 
